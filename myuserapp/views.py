@@ -1,6 +1,16 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from django.conf import settings
 # Create your views here.
+
+def mailsenddemo(request):
+    subject = 'Django Mail Demo'
+    message = 'Hello How are you ?'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['hetvikrishn@gmail.com',]
+    send_mail( subject, message, email_from, recipient_list )
+    return HttpResponse("Mail Sent")
 
 def homepageview(request):
     return render (request,'home.html')
@@ -52,7 +62,13 @@ def contactprocess(request):
     return render(request,'ans.html',{'mya':a,'myb':b,'myc':c,'myd':d,'mye':e,'myf':f,'myg':g,'myh':h})
 
 def loginpage(request):
+    subject = 'Welcome to Origin'
+    message = 'Your are selected as CEO'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = ['hetvikrishn@gmail.com',]
+    send_mail( subject, message, email_from, recipient_list )
     return render(request,'login.html')
+
 
 def loginprocess(request):
     txt1 = request.POST['email']
