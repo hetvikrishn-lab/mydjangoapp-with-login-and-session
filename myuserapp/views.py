@@ -44,22 +44,17 @@ def getSessionData2(request):
     return HttpResponse(msg)
    
 def contactprocess(request):
-    a = int(request.POST['txt1'])
-    b = int(request.POST['txt2'])
-    c = int(request.POST['txt3'])
-    d = int(request.POST['txt4'])
-    e = int(request.POST['txt5'])
-    f = a + b + c + d + e
-    g = f/5
-    msg = "a Value is ",a, "B Value is ",b, "C Value is ",c, "D Value is ",d, "E Value is ",e, "Sum is ",f, "Avg is ",g,
-    h=""
-    if f == 500:
-        h = "Grade A"
-    elif f>250:
-        h = "Grade B"
-    else:
-        h = "Grade C"
-    return render(request,'ans.html',{'mya':a,'myb':b,'myc':c,'myd':d,'mye':e,'myf':f,'myg':g,'myh':h})
+    txt1 = request.POST['txt1']
+    txt2 = request.POST['txt2']
+    txt3 = request.POST['txt3']
+    mymsg = "Hello has Contact you", txt1," Mobile No is ",txt2," Message is ",txt3
+    subject = 'Contact us From Website'
+    email_from = settings.EMAIL_HOST_USER
+    message = mymsg
+    recipient_list = ['hetvikrishn@gmail.com',]
+    send_mail(subject, message, email_from, recipient_list)
+    return HttpResponse("Thank you for Contacting us.")
+
 
 def loginpage(request):
     subject = 'Welcome to Origin'

@@ -6,16 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    {% include 'menu.html' %}
-    <h1> Hello contact </h1>
+   <h3>Contact US</h3>
     <form method="post" action="/contactprocess">
         {% csrf_token %}
-        Maths : <input type="number" min="1" max="100" name="txt1" required autocomplete="off"/>
-        Science : <input type="number" min="1" max="100" name="txt2" required autocomplete="off"/>
-        Gujarati : <input type="number" min="1" max="100" name="txt3" required autocomplete="off"/>
-        SocialScience : <input type="number" min="1" max="100" name="txt4" required autocomplete="off"/>
-        English : <input type="number" min="1" max="100" name="txt5" required autocomplete="off"/>
+        Name: <input type="text" name="txt1"/> <br/>
+        Mobile : <input type="text" name="txt2"/><br/>
+        Message: <input type="text" name="txt3"/><br/>
         <input type="submit"/>
-    </form>
 </body>
 </html>
